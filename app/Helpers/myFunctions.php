@@ -18,7 +18,7 @@ function repaymentCalculator($amount,$repayment_frequency,$loan_term,$monthly_in
             break;
     }
 
-    // calculate monthly repayment
+    // loan amortization
     $monthly_repayment = ($amount * $monthly_interest_rate) / (1 - pow(1 + $monthly_interest_rate, - $total_repayments));
 
     $total_interest = 0;
@@ -35,23 +35,18 @@ function repaymentCalculator($amount,$repayment_frequency,$loan_term,$monthly_in
 
         $repayment_plan[] = [
             'id' => $i,
-            'amount' => $monthly_repayment,
-            'interest_amount' => $interest,
-            'principal' => $principal,
-            'balance' => max(0, $balance)
+            'amount' => round($monthly_repayment,2),
+            'interest_amount' => round($interest,2),
+            'principal' => round($principal,2),
+            'balance' => round(max(0, $balance), 2)
         ];
     }
 
     $total_amount_due = $amount + $total_interest;
 
     return [
-        'total_interest' => $total_interest,
-        'total_amount_to_repay' => $total_amount_due,
+        'total_interest' => round($total_interest,2),
+        'total_amount_to_repay' => round($total_amount_due,2),
         'repayment_plan' => $repayment_plan
     ];
-}
-
-function calculateMonthlyRepayment($amount, $interest_rate, $repayment) {
-    $monthly_interest_rate = $interest_rate / 12 / 100;
-    return ($amount * $monthly_interest_rate) / (1 - pow(1 + $monthly_interest_rate, -$repayment));
 }

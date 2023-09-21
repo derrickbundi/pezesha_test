@@ -11,9 +11,13 @@ use App\Models\{Account,User};
 
 class AccountController extends Controller
 {
+    // inject account service
+    protected $accountService;
+
     public function __construct(AccountService $accountservice) {
         $this->accountservice = $accountservice;
     }
+
     public function create_account(Request $request) {
         // validate data
         $validator = Validator::make($request->all(), [
@@ -40,6 +44,7 @@ class AccountController extends Controller
             return _httpBadRequest('Oops, something went wrong',$e->getMessage());
         }
     }
+
     public function account_detail($id) {
         try {
             $account = Account::findOrFail($id);
@@ -49,6 +54,7 @@ class AccountController extends Controller
             return _httpBadRequest('Oops, something went wrong',$e->getMessage());
         }
     }
+
     public function transfer(Request $request) {
         // validate data
         $validator = Validator::make($request->all(), [
@@ -76,7 +82,7 @@ class AccountController extends Controller
                 // update accounts balances
                 $source_account->balance -= $request->amount;
                 $source_account->save();
-                
+
                 $destination_account->balance += $request->amount;
                 $destination_account->save();
             });

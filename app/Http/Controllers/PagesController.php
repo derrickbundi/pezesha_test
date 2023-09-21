@@ -14,6 +14,6 @@ class PagesController extends Controller
         $monthly_interest_rate = $request->interest_rate / 12 / 100;
         // repayment calculator function
         $result = repaymentCalculator($request->amount,$request->repayment_frequency,$request->loan_term,$monthly_interest_rate);
-        dd($result);
+        return view('calculator',compact('result'));
     }
 }

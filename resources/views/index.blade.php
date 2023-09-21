@@ -62,7 +62,7 @@
                 
                 <div class="row mt-3">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary btn-block">Simulate</button>
+                        <button type="submit" class="btn btn-primary btn-block">Calculate &#8594;</button>
                     </div>
                 </div>
               </form>

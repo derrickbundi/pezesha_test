@@ -17,12 +17,21 @@ php artisan serve
 ### API
 Seed user data can be used for testing API endpoints.
 
+```
+Email: joe@website.com
+Password: 123456
+```
+
+API collections in Postman are hosted at:
+
+[Postman](https://documenter.getpostman.com/view/9759229/2s9YCBt94r)
+
 ### Frontend & Tests
-```
-<app ip address>
-```
-or
+
+I have created calculator to test loan repayment calculation
+
+Click app ip address to interact with loan repayment calculator
 
 ```
-<app ip address>
+<ip address>
 ```
