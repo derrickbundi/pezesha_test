@@ -1,6 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Response;
 
+// Amortization calculator
 function repaymentCalculator($amount,$repayment_frequency,$loan_term,$monthly_interest_rate) {
     // get total repayments
     switch($repayment_frequency) {
@@ -49,4 +50,15 @@ function repaymentCalculator($amount,$repayment_frequency,$loan_term,$monthly_in
         'total_amount_to_repay' => round($total_amount_due,2),
         'repayment_plan' => $repayment_plan
     ];
+}
+
+// monthly repayment function
+function calculateMonthlyRepayment($amount,$interest,$repayment) {
+    $monthly_interest_rate = $interest / 12 / 100;
+    return ($amount * $monthly_interest_rate) / (1 - pow(1 + $monthly_interest_rate, - $repayment));
+}
+
+// monthly interest function
+function calculateMonthlyInterest($amount,$interest) {
+    return ($amount * $interest) / 12 / 100;
 }

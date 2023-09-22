@@ -28,10 +28,19 @@ API collections in Postman are hosted at:
 
 ### Frontend & Tests
 
-I have created calculator to test loan repayment calculation
-
-Click app ip address to interact with loan repayment calculator
+1. I have calculator pages to test loan repayment calculation manually
 
 ```
 <ip address>
+```
+
+2. I have created features test for testing loan repayment and monthly interest calculation functions
+
+```
+php artisan test
+```
+or
+
+```
+./vendor/bin/phpunit
 ```
